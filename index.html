@@ -3,65 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人作品集 | Your Name</title>
+    <title>陳姵宇 Peiyu Chen | 個人作品集</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f9; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
-        header h1 { color: #2c3e50; font-size: 2.2em; }
-        header p { color: #7f8c8d; font-size: 1.1em; }
-        section { margin-bottom: 30px; }
-        h2 { color: #3498db; border-left: 4px solid #3498db; padding-left: 10px; margin-bottom: 15px; font-size: 1.4em; }
-        ul { list-style: none; }
-        li { background: #eef7fc; margin-bottom: 10px; padding: 12px; border-radius: 4px; }
-        .project-title { font-weight: bold; color: #2c3e50; }
-        footer { text-align: center; color: #bdc3c7; font-size: 0.9em; margin-top: 20px; }
+        /* CSS Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-primary: #f0f0f2;
+            --text-secondary: #a0a0ab;
+            --text-muted: #60606a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #ffffff 0%, #a0a0ab 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Section Universal Style */
+        section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+
+        section:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* About & Description */
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Tags */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Portfolio Projects Block */
+        .projects-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .project-year {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Status Colors */
+        .year-completed {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Future / Reserved Project Card */
+        .project-card.placeholder {
+            border: 1px dashed var(--border-color);
+            background: transparent;
+            opacity: 0.6;
+        }
+
+        .project-card.placeholder:hover {
+            opacity: 0.9;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Contact & Links */
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px dotted var(--border-color);
+            transition: border-color 0.2s ease;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 50px;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
+        <!-- Header -->
         <header>
-            <h1>[你的名字]</h1>
-            <p>大一新生 | [你的系所名稱] | 未來[你的目標職位，如：全端工程師/設計師]</p>
+            <h1>陳姵宇</h1>
+            <p>學習與媒材設計學系 | 數位內容創作者 & 媒材設計師</p>
         </header>
 
+        <!-- About Section -->
         <section>
             <h2>關於我</h2>
-            <p>你好！我是目前就讀於 [學校名稱] [系所名稱] 的一年級學生。對 [你的興趣領域] 充滿熱情，目前正在積極學習相關專業技能，目標是在大四前累積豐富的實務作品。</p>
+            <div class="about-text">
+                <p>你好，我是陳姵宇，目前就讀於學習與媒材設計學系一年級。我熱衷於結合數位工具與創意媒材設計，專注於人際溝通、影音行銷與 AI 創作工具的跨界應用。目標是在大學四年間積累豐富的數位設計與專案實務作品，打造兼具視覺美感與社會價值的作品集。</p>
+            </div>
         </section>
 
+        <!-- Skills Section -->
         <section>
-            <h2>專業技能學習中</h2>
-            <ul>
-                <li><strong>程式語言 / 工具：</strong> HTML, CSS, JavaScript, Git / GitHub</li>
-                <li><strong>軟實力：</strong> 團隊合作、快速學習、問題解決</li>
-            </ul>
+            <h2>專業技能與工具</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">HTML / CSS / JavaScript</div>
+                <div class="skill-tag">Git / GitHub</div>
+                <div class="skill-tag">AI 創作工具 (Suno, AutoDraw, Gamma)</div>
+                <div class="skill-tag">影音剪輯與視覺設計</div>
+                <div class="skill-tag">薩提爾模式溝通 (Satir Model)</div>
+                <div class="skill-tag">專案企劃與軟體協作</div>
+            </div>
         </section>
 
+        <!-- Portfolio / Timeline Block -->
         <section>
-            <h2>作品與專案規劃</h2>
-            <ul>
-                <li>
-                    <div class="project-title">個人作品集網站（本網站）</div>
-                    <p>使用 HTML/CSS 打造的個人入口網站，透過 GitHub Pages 進行版本控制與部署。</p>
-                </li>
-                <li>
-                    <div class="project-title">[規劃中] 大一程式設計期末專案</div>
-                    <p>預計於本學期完成，將包含基礎網頁互動與應用。</p>
-                </li>
-            </ul>
+            <h2>作品與專案發展歷程</h2>
+            <div class="projects-timeline">
+                
+                <!-- 大一專案 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">個人作品集網站（本網站）</span>
+                        <span class="project-year year-completed">大一 · 進行中</span>
+                    </div>
+                    <p class="project-desc">使用 HTML5 / CSS3 獨立建構極簡深色系個人入口網站，並透過 GitHub Pages 完成版本控制與自動化部署。</p>
+                </div>
+
+                <!-- 大一專案 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">日落帆船體驗宣傳企劃與影片</span>
+                        <span class="project-year year-completed">大一 · 專案</span>
+                    </div>
+                    <p class="project-desc">針對 18 歲以上成人受眾規劃日落帆船宣傳影片與社群行銷企劃，結合故事敘事與視覺美學，打造具吸引力的推廣內容。</p>
+                </div>
+
+                <!-- 大二預留 -->
+                <div class="project-card placeholder">
+                    <div class="project-header">
+                        <span class="project-title">[規劃中] 大二：互動媒材與進階網頁專案</span>
+                        <span class="project-year year-future">大二預留</span>
+                    </div>
+                    <p class="project-desc">預計投入進階前端開發、UI/UX 互動設計與多媒體跨界整合專案。</p>
+                </div>
+
+                <!-- 大三預留 -->
+                <div class="project-card placeholder">
+                    <div class="project-header">
+                        <span class="project-title">[籌備中] 大三：核心專題與產學合作企劃</span>
+                        <span class="project-year year-future">大三預留</span>
+                    </div>
+                    <p class="project-desc">預計整合前兩年所學，進行主題式研究、大型專題設計或業界實習成果展示。</p>
+                </div>
+
+                <!-- 大四預留 -->
+                <div class="project-card placeholder">
+                    <div class="project-header">
+                        <span class="project-title">[籌備中] 大四：畢業展覽與終極代表作</span>
+                        <span class="project-year year-future">大四預留</span>
+                    </div>
+                    <p class="project-desc">集大成之畢業製作與業界對接作品，展現具備市場競爭力的專業設計實力。</p>
+                </div>
+
+            </div>
         </section>
 
+        <!-- Contact Section -->
         <section>
             <h2>聯絡方式</h2>
-            <p>Email: your-email@example.com</p>
-            <p>GitHub: <a href="https://github.com/" target="_blank">你的 GitHub 連結</a></p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+                <p>GitHub: <a href="https://github.com/" target="_blank">github.com/your-username</a></p>
+            </div>
         </section>
 
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2026 [你的名字]. All rights reserved.</p>
+            <p>&copy; 2026 陳姵宇 Peiyu Chen. All rights reserved.</p>
         </footer>
     </div>
+
 </body>
 </html>
