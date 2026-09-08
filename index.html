@@ -75,151 +75,269 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
 
-        h2 {
-            font-size: 1.35rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            color: #ffffff;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        h2 {<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳姵宇 Peiyu Chen | 個人作品集</title>
+    <style>
+        /* Base & CSS Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 18px;
-            background: #ffffff;
-            border-radius: 2px;
+        :root {
+            --bg-dark: #0a0d14;
+            --bg-card: rgba(18, 24, 38, 0.6);
+            --bg-card-hover: rgba(28, 36, 56, 0.8);
+            --border-glow: rgba(99, 102, 241, 0.2);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --accent-blue: #6366f1;
+            --accent-cyan: #06b6d4;
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+            --text-muted: #4b5563;
         }
 
-        /* About & Description */
-        .about-text {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.8;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            /* 設計感背景：微光點陣與雙色漸層暈染 */
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 24px 24px;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
         }
 
-        /* Skills Tags */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.88rem;
-            letter-spacing: 0.02em;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* Portfolio Projects Block */
-        .projects-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .project-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            background: var(--bg-card-hover);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .project-header {
+        /* Header Style */
+        header {
+            text-align: left;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        header .title-area h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .title-area p {
+            color: var(--text-sub);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+
+        /* Main Layout Grid: 左欄（頭像與簡介） + 右欄（錯位作品集） */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 32px;
+        }
+
+        /* Left Column: Profile & About */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 個人照預留區 */
+        .profile-photo-container {
+            width: 100%;
+            height: 280px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px dashed var(--border-glow);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 12px;
+            color: var(--text-sub);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-year {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .profile-photo-container:hover {
+            border-color: var(--accent-blue);
+            background: rgba(99, 102, 241, 0.05);
         }
 
-        /* Status Colors */
-        .year-completed {
-            background: rgba(255, 255, 255, 0.15);
+        .profile-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            display: none; /* 當你放入圖片網址時改為 block */
+        }
+
+        .photo-placeholder-text {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        /* 個人簡介區（與頭像保持距離） */
+        .about-section {
+            margin-top: 40px; /* 正下方拉開距離 */
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        .about-section h2 {
+            font-size: 1.1rem;
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .project-title {
-            font-size: 1.15rem;
+        .about-section h2::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+        }
+
+        .about-placeholder {
+            color: var(--text-sub);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            min-height: 120px;
+        }
+
+        /* Right Column: 錯位作品集排版 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* 作品通用卡片 */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            background: var(--bg-card-hover);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-sub);
+            border: 1px solid var(--border-light);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 8px;
         }
 
-        .project-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .card-body {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            min-height: 80px;
         }
 
-        /* Future / Reserved Project Card */
-        .project-card.placeholder {
-            border: 1px dashed var(--border-color);
-            background: transparent;
-            opacity: 0.6;
+        /* 大二專屬：最大主打卡片 */
+        .card.featured {
+            grid-column: span 2; /* 橫跨兩欄 */
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.5);
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+            padding: 32px;
         }
 
-        .project-card.placeholder:hover {
-            opacity: 0.9;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Contact & Links */
-        .contact-info p {
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .contact-info a {
+        .card.featured .card-tag {
+            background: var(--accent-blue);
             color: #ffffff;
-            text-decoration: none;
-            border-bottom: 1px dotted var(--border-color);
-            transition: border-color 0.2s ease;
+            border: none;
         }
 
-        .contact-info a:hover {
-            border-bottom-color: #ffffff;
+        .card.featured .card-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .card.featured .card-body {
+            min-height: 120px;
+            font-size: 0.98rem;
+        }
+
+        /* 錯位對齊視覺效果 (Masonry Offset) */
+        .card.offset-down {
+            margin-top: 30px; /* 創造高低錯位感 */
         }
 
         /* Footer */
         footer {
+            margin-top: 60px;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
-            margin-top: 50px;
-            padding-bottom: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 868px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .card.featured {
+                grid-column: span 1;
+            }
+            .card.offset-down {
+                margin-top: 0;
+            }
         }
     </style>
 </head>
@@ -228,96 +346,81 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <h1>陳姵宇</h1>
-            <p>學習與媒材設計學系 | 數位內容創作者 & 媒材設計師</p>
+            <div class="title-area">
+                <h1>陳姵宇</h1>
+                <p>個人作品集與專案展演 Portfolio</p>
+            </div>
         </header>
 
-        <!-- About Section -->
-        <section>
-            <h2>關於我</h2>
-            <div class="about-text">
-                <p>你好，我是陳姵宇，目前就讀於學習與媒材設計學系一年級。我熱衷於結合數位工具與創意媒材設計，專注於人際溝通、影音行銷與 AI 創作工具的跨界應用。目標是在大學四年間積累豐富的數位設計與專案實務作品，打造兼具視覺美感與社會價值的作品集。</p>
+        <!-- Main Layout -->
+        <div class="main-layout">
+            
+            <!-- 左欄：個人照 + 個人簡介 -->
+            <div class="left-column">
+                <!-- 個人照預留區 -->
+                <div class="profile-photo-container">
+                    <!-- 若要放入圖片，可將下面的 <img> 標籤取消註解並替換 src -->
+                    <!-- <img src="your-photo.jpg" alt="個人照"> -->
+                    <div class="photo-placeholder-text">
+                        📷<br>[預留個人照片空間]
+                    </div>
+                </div>
+
+                <!-- 個人簡介區（正下方隔開距離） -->
+                <div class="about-section">
+                    <h2>個人簡介</h2>
+                    <div class="about-placeholder">
+                        [請在此處填入個人簡介與關於我的文字...]
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section>
-            <h2>專業技能與工具</h2>
-            <div class="skills-grid">
-                <div class="skill-tag">HTML / CSS / JavaScript</div>
-                <div class="skill-tag">Git / GitHub</div>
-                <div class="skill-tag">AI 創作工具 (Suno, AutoDraw, Gamma)</div>
-                <div class="skill-tag">影音剪輯與視覺設計</div>
-                <div class="skill-tag">薩提爾模式溝通 (Satir Model)</div>
-                <div class="skill-tag">專案企劃與軟體協作</div>
-            </div>
-        </section>
+            <!-- 右欄：四個時期作品（大二最大 + 錯位排版） -->
+            <div class="portfolio-grid">
 
-        <!-- Portfolio / Timeline Block -->
-        <section>
-            <h2>作品與專案發展歷程</h2>
-            <div class="projects-timeline">
-                
-                <!-- 大一專案 1 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-title">個人作品集網站（本網站）</span>
-                        <span class="project-year year-completed">大一 · 進行中</span>
+                <!-- 大一作品卡片 -->
+                <div class="card">
+                    <span class="card-tag">FRESHMAN · 大一</span>
+                    <h3 class="card-title">[大一作品標題]</h3>
+                    <div class="card-body">
+                        [預留大一專案簡述與成果說明...]
                     </div>
-                    <p class="project-desc">使用 HTML5 / CSS3 獨立建構極簡深色系個人入口網站，並透過 GitHub Pages 完成版本控制與自動化部署。</p>
                 </div>
 
-                <!-- 大一專案 2 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-title">日落帆船體驗宣傳企劃與影片</span>
-                        <span class="project-year year-completed">大一 · 專案</span>
+                <!-- 大二作品卡片（主打，最大最凸顯） -->
+                <div class="card featured">
+                    <span class="card-tag">FEATURED · 大二代表作</span>
+                    <h3 class="card-title">[大二核心作品標題]</h3>
+                    <div class="card-body">
+                        [預留大二最滿意作品之詳細專案說明、設計理念與成果展示空間...]
                     </div>
-                    <p class="project-desc">針對 18 歲以上成人受眾規劃日落帆船宣傳影片與社群行銷企劃，結合故事敘事與視覺美學，打造具吸引力的推廣內容。</p>
                 </div>
 
-                <!-- 大二預留 -->
-                <div class="project-card placeholder">
-                    <div class="project-header">
-                        <span class="project-title">[規劃中] 大二：互動媒材與進階網頁專案</span>
-                        <span class="project-year year-future">大二預留</span>
+                <!-- 大三作品卡片（錯位下移） -->
+                <div class="card offset-down">
+                    <span class="card-tag">JUNIOR · 大三</span>
+                    <h3 class="card-title">[大三作品標題]</h3>
+                    <div class="card-body">
+                        [預留大三專案簡述與成果說明...]
                     </div>
-                    <p class="project-desc">預計投入進階前端開發、UI/UX 互動設計與多媒體跨界整合專案。</p>
                 </div>
 
-                <!-- 大三預留 -->
-                <div class="project-card placeholder">
-                    <div class="project-header">
-                        <span class="project-title">[籌備中] 大三：核心專題與產學合作企劃</span>
-                        <span class="project-year year-future">大三預留</span>
+                <!-- 大四作品卡片 -->
+                <div class="card">
+                    <span class="card-tag">SENIOR · 大四</span>
+                    <h3 class="card-title">[大四作品標題]</h3>
+                    <div class="card-body">
+                        [預留大四畢業專題與代表作說明...]
                     </div>
-                    <p class="project-desc">預計整合前兩年所學，進行主題式研究、大型專題設計或業界實習成果展示。</p>
-                </div>
-
-                <!-- 大四預留 -->
-                <div class="project-card placeholder">
-                    <div class="project-header">
-                        <span class="project-title">[籌備中] 大四：畢業展覽與終極代表作</span>
-                        <span class="project-year year-future">大四預留</span>
-                    </div>
-                    <p class="project-desc">集大成之畢業製作與業界對接作品，展現具備市場競爭力的專業設計實力。</p>
                 </div>
 
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section>
-            <h2>聯絡方式</h2>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-                <p>GitHub: <a href="https://github.com/" target="_blank">github.com/your-username</a></p>
-            </div>
-        </section>
+        </div>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2026 陳姵宇 Peiyu Chen. All rights reserved.</p>
+            <p>&copy; 2026 陳姵宇. All rights reserved.</p>
         </footer>
     </div>
 
