@@ -5,337 +5,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>陳姵宇 Peiyu Chen | 個人作品集</title>
     <style>
-        /* CSS Reset & Variables */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-
-        :root {
-            --bg-primary: #0a0a0c;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --bg-card-hover: rgba(255, 255, 255, 0.06);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-primary: #f0f0f2;
-            --text-secondary: #a0a0ab;
-            --text-muted: #60606a;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-        }
-
-        /* Header Style */
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-            background: linear-gradient(180deg, #ffffff 0%, #a0a0ab 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        header p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            letter-spacing: 0.05em;
-        }
-
-        /* Section Universal Style */
-        section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 32px;
-            backdrop-filter: blur(10px);
-            transition: border-color 0.3s ease;
-        }
-
-        section:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        h2 {<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陳姵宇 Peiyu Chen | 個人作品集</title>
-    <style>
-        /* Base & CSS Variables */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --bg-dark: #0a0d14;
-            --bg-card: rgba(18, 24, 38, 0.6);
-            --bg-card-hover: rgba(28, 36, 56, 0.8);
-            --border-glow: rgba(99, 102, 241, 0.2);
-            --border-light: rgba(255, 255, 255, 0.08);
-            --accent-blue: #6366f1;
-            --accent-cyan: #06b6d4;
-            --text-main: #f3f4f6;
-            --text-sub: #9ca3af;
-            --text-muted: #4b5563;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-dark);
-            /* 設計感背景：微光點陣與雙色漸層暈染 */
+            background-color: #0c0f17;
+            /* 設計感背景：微光漸層 + 幾何網格線條 */
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
-                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 24px 24px;
-            color: var(--text-main);
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+            color: #e2e8f0;
             line-height: 1.6;
-            padding: 40px 20px;
+            padding: 50px 30px;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Header Style */
+        /* 標題欄 */
         header {
-            text-align: left;
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        header .title-area h1 {
-            font-size: 2.5rem;
+        header h1 {
+            font-size: 2.8rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
             background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        header .title-area p {
-            color: var(--text-sub);
-            font-size: 1rem;
-            margin-top: 4px;
-        }
-
-        /* Main Layout Grid: 左欄（頭像與簡介） + 右欄（錯位作品集） */
-        .main-layout {
+        /* 核心版面：左半邊（頭像+簡介） | 右半邊（四階段作品集） */
+        .portfolio-wrapper {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 32px;
+            grid-template-columns: 340px 1fr; /* 左邊固定寬度，右邊彈性佔滿 */
+            gap: 50px;
+            align-items: start;
         }
 
-        /* Left Column: Profile & About */
-        .left-column {
+        /* ================= 左半邊：僅放照片與簡介 ================= */
+        .left-sidebar {
             display: flex;
             flex-direction: column;
         }
 
-        /* 個人照預留區 */
-        .profile-photo-container {
+        /* 個人照片框（自帶呼吸微光光暈） */
+        .photo-box {
             width: 100%;
-            height: 280px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 2px dashed var(--border-glow);
-            border-radius: 16px;
+            height: 360px;
+            background: rgba(18, 24, 38, 0.8);
+            border: 2px solid rgba(99, 102, 241, 0.5);
+            border-radius: 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: var(--text-sub);
-            transition: all 0.3s ease;
+            color: #818cf8;
+            font-size: 1rem;
+            /* 照片發光微光效果 */
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.3), inset 0 0 15px rgba(99, 102, 241, 0.1);
             position: relative;
             overflow: hidden;
         }
 
-        .profile-photo-container:hover {
-            border-color: var(--accent-blue);
-            background: rgba(99, 102, 241, 0.05);
-        }
-
-        .profile-photo-container img {
+        .photo-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 14px;
-            display: none; /* 當你放入圖片網址時改為 block */
+            display: none; /* 補上圖片連結後改為 block */
         }
 
-        .photo-placeholder-text {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            text-align: center;
-            padding: 0 15px;
-        }
-
-        /* 個人簡介區（與頭像保持距離） */
-        .about-section {
-            margin-top: 40px; /* 正下方拉開距離 */
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
+        /* 留出一段距離放簡介 */
+        .about-box {
+            margin-top: 45px;
+            background: rgba(18, 24, 38, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 24px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
         }
 
-        .about-section h2 {
-            font-size: 1.1rem;
+        .about-box h2 {
+            font-size: 1.2rem;
             color: #ffffff;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            letter-spacing: 0.05em;
         }
 
-        .about-section h2::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--accent-cyan);
-            border-radius: 50%;
+        .about-content {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            min-height: 100px;
         }
 
-        .about-placeholder {
-            color: var(--text-sub);
-            font-size: 0.92rem;
-            line-height: 1.7;
-            min-height: 120px;
-        }
-
-        /* Right Column: 錯位作品集排版 */
-        .portfolio-grid {
+        /* ================= 右半邊：錯位作品集網格 ================= */
+        .right-portfolio {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            align-items: start;
+            gap: 24px;
         }
 
-        /* 作品通用卡片 */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 24px;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-            position: relative;
+        /* 作品卡片基礎樣式（設計感深色質感底區塊） */
+        .work-card {
+            background: linear-gradient(145deg, rgba(20, 26, 40, 0.9) 0%, rgba(13, 17, 26, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 28px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .card:hover {
-            transform: translateY(-4px);
+        .work-card:hover {
+            transform: translateY(-6px);
             border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            background: var(--bg-card-hover);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
         }
 
-        .card-tag {
+        .tag {
             display: inline-block;
             font-size: 0.75rem;
             font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.05em;
-            margin-bottom: 12px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
             background: rgba(255, 255, 255, 0.05);
-            color: var(--text-sub);
-            border: 1px solid var(--border-light);
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
+        .work-title {
+            font-size: 1.25rem;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .card-body {
-            color: var(--text-sub);
-            font-size: 0.9rem;
+        .work-desc {
+            color: #64748b;
+            font-size: 0.92rem;
             min-height: 80px;
         }
 
-        /* 大二專屬：最大主打卡片 */
-        .card.featured {
-            grid-column: span 2; /* 橫跨兩欄 */
-            background: linear-gradient(135deg, rgba(30, 27, 75, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
-            border: 1px solid rgba(99, 102, 241, 0.5);
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
-            padding: 32px;
+        /* 【大二作品】設為最大，跨滿雙欄並有重點漸層邊框與發光 */
+        .work-card.sophomore-featured {
+            grid-column: 1 / -1; /* 跨滿整個右半邊 */
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(129, 140, 248, 0.6);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+            padding: 36px;
         }
 
-        .card.featured .card-tag {
-            background: var(--accent-blue);
+        .work-card.sophomore-featured .tag {
+            background: #6366f1;
             color: #ffffff;
             border: none;
         }
 
-        .card.featured .card-title {
-            font-size: 1.5rem;
+        .work-card.sophomore-featured .work-title {
+            font-size: 1.6rem;
             color: #ffffff;
         }
 
-        .card.featured .card-body {
-            min-height: 120px;
-            font-size: 0.98rem;
+        .work-card.sophomore-featured .work-desc {
+            color: #cbd5e1;
+            min-height: 110px;
+            font-size: 1rem;
         }
 
-        /* 錯位對齊視覺效果 (Masonry Offset) */
-        .card.offset-down {
-            margin-top: 30px; /* 創造高低錯位感 */
+        /* 錯位感設定：讓大三卡片下移，創造高低錯位的設計感 */
+        .work-card.offset-item {
+            margin-top: 35px;
         }
 
-        /* Footer */
+        /* 頁腳 */
         footer {
-            margin-top: 60px;
+            margin-top: 80px;
             text-align: center;
-            color: var(--text-muted);
+            color: #475569;
             font-size: 0.85rem;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-light);
         }
 
-        /* Responsive Design */
-        @media (max-width: 868px) {
-            .main-layout {
+        /* RWD 響應式 */
+        @media (max-width: 900px) {
+            .portfolio-wrapper {
                 grid-template-columns: 1fr;
             }
-            .portfolio-grid {
+            .right-portfolio {
                 grid-template-columns: 1fr;
             }
-            .card.featured {
-                grid-column: span 1;
-            }
-            .card.offset-down {
+            .work-card.offset-item {
                 margin-top: 0;
             }
         }
@@ -344,73 +213,67 @@
 <body>
 
     <div class="container">
-        <!-- Header -->
+        <!-- 頂部標題 -->
         <header>
-            <div class="title-area">
-                <h1>陳姵宇</h1>
-                <p>個人作品集與專案展演 Portfolio</p>
-            </div>
+            <h1>陳姵宇 Peiyu Chen</h1>
         </header>
 
-        <!-- Main Layout -->
-        <div class="main-layout">
+        <!-- 主架構：左半邊照片簡介 / 右半邊作品集 -->
+        <div class="portfolio-wrapper">
             
-            <!-- 左欄：個人照 + 個人簡介 -->
-            <div class="left-column">
-                <!-- 個人照預留區 -->
-                <div class="profile-photo-container">
-                    <!-- 若要放入圖片，可將下面的 <img> 標籤取消註解並替換 src -->
-                    <!-- <img src="your-photo.jpg" alt="個人照"> -->
-                    <div class="photo-placeholder-text">
-                        📷<br>[預留個人照片空間]
-                    </div>
+            <!-- 【左半邊】只放個人照與簡介 -->
+            <div class="left-sidebar">
+                <!-- 個人照片空間（帶微光光暈邊框） -->
+                <div class="photo-box">
+                    <p>📷 [個人照片空間]</p>
+                    <img src="" alt="個人照片">
                 </div>
 
-                <!-- 個人簡介區（正下方隔開距離） -->
-                <div class="about-section">
+                <!-- 與照片保持適當距離的個人簡介 -->
+                <div class="about-box">
                     <h2>個人簡介</h2>
-                    <div class="about-placeholder">
-                        [請在此處填入個人簡介與關於我的文字...]
+                    <div class="about-content">
+                        <!-- 空著，無預設文字 -->
                     </div>
                 </div>
             </div>
 
-            <!-- 右欄：四個時期作品（大二最大 + 錯位排版） -->
-            <div class="portfolio-grid">
+            <!-- 【右半邊】作品集（大二最大 + 高低錯位排版） -->
+            <div class="right-portfolio">
 
-                <!-- 大一作品卡片 -->
-                <div class="card">
-                    <span class="card-tag">FRESHMAN · 大一</span>
-                    <h3 class="card-title">[大一作品標題]</h3>
-                    <div class="card-body">
-                        [預留大一專案簡述與成果說明...]
+                <!-- 大一作品 -->
+                <div class="work-card">
+                    <span class="tag">大一作品</span>
+                    <h3 class="work-title"><!-- 標題空著 --></h3>
+                    <div class="work-desc">
+                        <!-- 內容空著 -->
                     </div>
                 </div>
 
-                <!-- 大二作品卡片（主打，最大最凸顯） -->
-                <div class="card featured">
-                    <span class="card-tag">FEATURED · 大二代表作</span>
-                    <h3 class="card-title">[大二核心作品標題]</h3>
-                    <div class="card-body">
-                        [預留大二最滿意作品之詳細專案說明、設計理念與成果展示空間...]
+                <!-- 大二作品（最大格、主打卡片） -->
+                <div class="work-card sophomore-featured">
+                    <span class="tag">大二核心作品 (FEATURED)</span>
+                    <h3 class="work-title"><!-- 標題空著 --></h3>
+                    <div class="work-desc">
+                        <!-- 內容空著 -->
                     </div>
                 </div>
 
-                <!-- 大三作品卡片（錯位下移） -->
-                <div class="card offset-down">
-                    <span class="card-tag">JUNIOR · 大三</span>
-                    <h3 class="card-title">[大三作品標題]</h3>
-                    <div class="card-body">
-                        [預留大三專案簡述與成果說明...]
+                <!-- 大三作品（下移錯位） -->
+                <div class="work-card offset-item">
+                    <span class="tag">大三作品</span>
+                    <h3 class="work-title"><!-- 標題空著 --></h3>
+                    <div class="work-desc">
+                        <!-- 內容空著 -->
                     </div>
                 </div>
 
-                <!-- 大四作品卡片 -->
-                <div class="card">
-                    <span class="card-tag">SENIOR · 大四</span>
-                    <h3 class="card-title">[大四作品標題]</h3>
-                    <div class="card-body">
-                        [預留大四畢業專題與代表作說明...]
+                <!-- 大四作品 -->
+                <div class="work-card">
+                    <span class="tag">大四作品</span>
+                    <h3 class="work-title"><!-- 標題空著 --></h3>
+                    <div class="work-desc">
+                        <!-- 內容空著 -->
                     </div>
                 </div>
 
@@ -418,7 +281,6 @@
 
         </div>
 
-        <!-- Footer -->
         <footer>
             <p>&copy; 2026 陳姵宇. All rights reserved.</p>
         </footer>
