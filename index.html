@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>陳姵宇 Peiyu Chen | 個人作品集</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* CSS Reset & Variables */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-body: #0a0a0c;          /* 極深墨黑背景 */
+            --bg-card: #141418;          /* 普通卡片深灰 */
+            --bg-card-feat: #1c1e26;     /* 大二焦點卡片灰藍 */
+            --border-light: rgba(255, 255, 255, 0.08); /* 關鍵：極細半透明白框 */
+            --text-main: #f4f4f5;       /* 冷白文字 */
+            --text-sub: #a1a1aa;        /* 次要灰字 */
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #0a0a0c;
-            /* 高級極簡漸層背景（非科技感藍紫漸層） */
-            background-image: radial-gradient(circle at 50% 0%, #16161a 0%, #0a0a0c 70%);
-            color: #e4e4e7;
+            background-color: var(--bg-body);
+            background-image: radial-gradient(circle at 50% -10%, #1a1a20 0%, var(--bg-body) 80%);
+            color: var(--text-main);
             line-height: 1.6;
-            padding: 50px 20px;
+            padding: 60px 20px;
             min-height: 100vh;
         }
 
@@ -27,51 +32,88 @@
             margin: 0 auto;
         }
 
-        /* 標題置中放大 */
+        /* 標題：置中放大 */
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
             padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid var(--border-light);
         }
 
         header h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: #ffffff;
             letter-spacing: 0.05em;
         }
 
-        /* 核心二分版面 */
+        /* 核心版面 */
         .portfolio-wrapper {
             display: flex;
-            gap: 48px;
+            gap: 50px;
             align-items: flex-start;
         }
 
-        /* 左側：證件照 + 細長型簡介 */
+        /* 左側：簡介在上，照片在左下 (已順序對調) */
         .left-sidebar {
-            width: 280px;
+            width: 300px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start; /* 確保內容對齊左邊 */
         }
 
-        /* 個人照片（證件照尺寸，無微光，極簡風格） */
+        /* 個人簡介（細長型長方形） */
+        .about-box {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light); /* 加入細白框 */
+            border-radius: 12px;
+            padding: 30px 24px;
+            min-height: 400px; 
+            margin-bottom: 40px; /* 為下方照片留空間 */
+            position: relative;
+        }
+
+        .about-box h2 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 16px;
+            font-weight: 600;
+            border-left: 2px solid #ffffff; /* 白線對齊提示 */
+            padding-left: 12px;
+        }
+
+        .about-content {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* 個人照片（證件照尺寸，對齊簡介最左邊，已移除微光） */
         .photo-box {
             width: 150px;
             height: 190px;
-            background: #121215;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
+            background: #101012;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* 稍微明顯一點的白框 */
+            border-radius: 6px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #71717a;
-            font-size: 0.85rem;
-            margin-bottom: 30px;
+            color: #52525b;
+            font-size: 0.8rem;
             overflow: hidden;
+            position: relative; /* 用於定位 */
+        }
+
+        /* 在照片左側加上一條垂直參考線，視覺上強化對齊感 */
+        .photo-box::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.4);
         }
 
         .photo-box img {
@@ -81,32 +123,7 @@
             display: none;
         }
 
-        /* 個人簡介（細長型長方形） */
-        .about-box {
-            width: 100%;
-            background: #141418;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 28px 20px;
-            min-height: 380px; /* 拉長為細長型 */
-        }
-
-        .about-box h2 {
-            font-size: 1.1rem;
-            color: #ffffff;
-            margin-bottom: 16px;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-            border-left: 2px solid #e4e4e7;
-            padding-left: 10px;
-        }
-
-        .about-content {
-            color: #a1a1aa;
-            font-size: 0.9rem;
-        }
-
-        /* 右側作品集：兩欄式錯位排版 */
+        /* 右側作品集：兩欄式高低錯位 (已調整大二/大三位置) */
         .right-portfolio {
             flex-grow: 1;
             display: flex;
@@ -120,162 +137,157 @@
             gap: 28px;
         }
 
-        /* 右欄向下滑動，創造高低錯位感 */
+        /* 右欄向下滑動錯位 */
         .portfolio-col.right-col {
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
-        /* 作品卡片基礎（深色極簡層次） */
+        /* 作品卡片：核心簡約輕奢風格 */
         .work-card {
-            background: #141418;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light); /* 每個方框旁邊增加細白框 */
             border-radius: 14px;
-            padding: 24px;
-            transition: all 0.3s ease;
+            padding: 26px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
         }
 
+        /* 懸停效果：增加框線亮度和上浮，提升層次感 */
         .work-card:hover {
-            border-color: rgba(255, 255, 255, 0.25);
-            background: #18181c;
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            background-color: #18181c;
         }
 
         .tag {
             display: inline-block;
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 3px 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
             border-radius: 4px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             background: rgba(255, 255, 255, 0.06);
-            color: #a1a1aa;
+            color: #d4d4d8;
             letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         .work-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #ffffff;
             margin-bottom: 10px;
             font-weight: 600;
         }
 
         .work-desc {
-            color: #71717a;
-            font-size: 0.88rem;
+            color: var(--text-sub);
+            font-size: 0.9rem;
         }
 
-        /* 不同尺寸卡片：長方形與正方形穿插 */
-        .card-rect-short {
-            min-height: 180px;
-        }
+        /* 尺寸設定 */
+        .card-rect-short { min-height: 180px; }
+        .card-square { min-height: 250px; }
 
-        .card-square {
-            min-height: 240px;
-        }
-
-        /* 大二核心作品：較大的長方形卡片 */
+        /* 大二核心作品：較淺的灰藍背景，做出層次差異 */
         .card-sophomore {
             min-height: 320px;
-            background: #1a1a20;
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: var(--bg-card-feat);
+            border: 1px solid rgba(255, 255, 255, 0.25); /* 框線更亮 */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.03); /* 極微弱白色暈染，增加層次 */
         }
 
         .card-sophomore .tag {
             background: #ffffff;
-            color: #0a0a0c;
-            font-weight: 700;
+            color: #000000;
         }
 
-        .card-sophomore .work-title {
-            font-size: 1.4rem;
-        }
+        .card-sophomore .work-title { font-size: 1.5rem; }
+        .card-sophomore .work-desc { color: #d4d4d8; }
 
         footer {
-            margin-top: 90px;
+            margin-top: 100px;
             text-align: center;
             color: #52525b;
             font-size: 0.85rem;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
         }
 
-        /* 響應式 */
-        @media (max-width: 820px) {
-            .portfolio-wrapper {
-                flex-direction: column;
-            }
-            .left-sidebar {
-                width: 100%;
-            }
-            .right-portfolio {
-                flex-direction: column;
-            }
-            .portfolio-col.right-col {
-                margin-top: 0;
-            }
+        /* Responsive */
+        @media (max-width: 850px) {
+            .portfolio-wrapper { flex-direction: column; }
+            .left-sidebar { width: 100%; align-items: center; }
+            .right-portfolio { flex-direction: column; }
+            .portfolio-col.right-col { margin-top: 0; }
+            .photo-box { align-self: flex-start; margin-left: 20px; } /* 手機版維持照片在左下 */
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- 名字置中與放大 -->
+        <!-- 名字：置中放大 -->
         <header>
             <h1>陳姵宇 Peiyu Chen</h1>
         </header>
 
-        <!-- 主體版面 -->
+        <!-- 主架構 -->
         <div class="portfolio-wrapper">
             
-            <!-- 左欄：證件照 + 細長型簡介 -->
+            <!-- 【左半邊】已對調順序：簡介在上，照片在左下 -->
             <div class="left-sidebar">
-                <!-- 證件照大小，極簡風（移除發光/科技感邊框） -->
+                
+                <!-- 個人簡介區（細長型） -->
+                <div class="about-box">
+                    <h2>個人簡介</h2>
+                    <div class="about-content">
+                        <!-- 可填入簡介 -->
+                    </div>
+                </div>
+
+                <!-- 證件照大小，已移除呼吸微光 -->
                 <div class="photo-box">
                     <p>📷 證件照空間</p>
                     <img src="" alt="個人照片">
                 </div>
-
-                <!-- 長方形細長簡介區 -->
-                <div class="about-box">
-                    <h2>個人簡介</h2>
-                    <div class="about-content">
-                        <!-- 可在此填入簡介內容 -->
-                    </div>
-                </div>
             </div>
 
-            <!-- 右欄：作品集（左右兩欄高低錯位、黑灰色階層次、正方形/長方形穿插、無重複內容） -->
+            <!-- 【右半邊】作品集（左右兩欄高低錯位、黑灰色階層次、正方形/長方形穿插） -->
             <div class="right-portfolio">
 
-                <!-- 左側縱向欄位 -->
+                <!-- 左側縱向欄位 (含大一、大二featured) -->
                 <div class="portfolio-col left-col">
                     
-                    <!-- 大一作品（一般長方形） -->
+                    <!-- 大一作品 -->
                     <div class="work-card card-rect-short">
                         <span class="tag">FRESHMAN · 大一作品</span>
                         <h3 class="work-title"></h3>
                         <div class="work-desc"></div>
                     </div>
 
-                    <!-- 大二核心作品（大尺寸長方形，顯眼突出） -->
+                    <!-- 大二核心作品 (與大三互換，現居左欄下方，最大最顯眼) -->
                     <div class="work-card card-sophomore">
-                        <span class="tag">FEATURED · 大二核心代表作</span>
+                        <span class="tag">FEATURED · 大二核心作品</span>
                         <h3 class="work-title"></h3>
                         <div class="work-desc"></div>
                     </div>
 
                 </div>
 
-                <!-- 右側縱向欄位（向下滑動錯位） -->
+                <!-- 右側縱向欄位 (含大三、大四) -> 向下滑動錯位 -->
                 <div class="portfolio-col right-col">
                     
-                    <!-- 大三作品（正方形感卡片） -->
+                    <!-- 大三作品 (與大二互換，現居右欄上方，長方形/正方形穿插) -->
                     <div class="work-card card-square">
                         <span class="tag">JUNIOR · 大三作品</span>
                         <h3 class="work-title"></h3>
                         <div class="work-desc"></div>
                     </div>
 
-                    <!-- 大四作品（短長方形卡片） -->
+                    <!-- 大四作品 -->
                     <div class="work-card card-rect-short">
-                        <span class="tag">SENIOR · 大四畢業作品</span>
+                        <span class="tag">SENIOR · 大四作品</span>
                         <h3 class="work-title"></h3>
                         <div class="work-desc"></div>
                     </div>
