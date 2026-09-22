@@ -9,20 +9,21 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            /* 調整底色與卡片顏色的對比 */
-            --bg-body: #08080a;           /* 極致深黑背景 */
-            --bg-card: rgba(255, 255, 255, 0.04); /* 半透明白 */
-            --bg-card-feat: rgba(255, 255, 255, 0.08); /* 焦點卡片，稍亮 */
-            --border-light: rgba(255, 255, 255, 0.12); /* 框線更細緻半透明 */
-            --text-main: #f4f4f5;         /* 冷白文字 */
-            --text-sub: #a1a1aa;          /* 次要灰字 */
-            --accent-color: #ffffff;
+            /* 莫蘭迪藍色調變數 */
+            --bg-body: #0d0f12;                  /* 深黑背景 */
+            --bg-card: #161a20;                  /* 深色卡片底色 */
+            --bg-card-feat: #1e242c;             /* 精選作品卡片底色 */
+            --border-light: #27303d;             /* 微亮藍灰邊框 */
+            --text-main: #f0f4f8;                /* 冷白文字 */
+            --text-sub: #94a3b8;                 /* 莫蘭迪灰藍次要字 */
+            --color-primary: #8aa9c4;            /* 主莫蘭迪藍 */
+            --color-accent: #a3c1da;             /* 亮莫蘭迪藍 */
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-body);
-            background-image: radial-gradient(circle at 50% -20%, #1a1a22 0%, var(--bg-body) 80%);
+            background-image: radial-gradient(circle at 50% -20%, #17202a 0%, var(--bg-body) 80%);
             color: var(--text-main);
             line-height: 1.6;
             padding: 60px 20px;
@@ -69,13 +70,13 @@
         .photo-box {
             width: 150px;
             height: 190px;
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #52525b;
+            color: var(--text-sub);
             font-size: 0.8rem;
             overflow: hidden;
             margin-bottom: 40px;
@@ -101,10 +102,10 @@
 
         .about-box h2 {
             font-size: 1.2rem;
-            color: #ffffff;
+            color: var(--color-primary);
             margin-bottom: 16px;
             font-weight: 600;
-            border-left: 2px solid #ffffff;
+            border-left: 3px solid var(--color-primary);
             padding-left: 12px;
         }
 
@@ -132,7 +133,7 @@
             margin-top: 60px;
         }
 
-        /* 作品卡片 (改為 <a> 標籤，去除預設底線並設為塊級元素) */
+        /* 作品卡片 */
         .work-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
@@ -148,9 +149,9 @@
 
         .work-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.3);
-            background-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            border-color: var(--color-primary);
+            background-color: #1a2028;
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.5);
         }
 
         .tag {
@@ -160,8 +161,8 @@
             padding: 4px 10px;
             border-radius: 4px;
             margin-bottom: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #d4d4d8;
+            background: rgba(138, 169, 196, 0.15);
+            color: var(--color-primary);
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
@@ -179,12 +180,12 @@
         .work-title .arrow {
             font-size: 1rem;
             transition: transform 0.3s ease;
-            color: var(--text-sub);
+            color: var(--color-primary);
         }
 
         .work-card:hover .work-title .arrow {
             transform: translateX(4px);
-            color: #ffffff;
+            color: var(--color-accent);
         }
 
         .work-desc {
@@ -200,22 +201,22 @@
         .card-sophomore {
             min-height: 320px;
             background: var(--bg-card-feat);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--color-primary);
+            box-shadow: 0 0 20px rgba(138, 169, 196, 0.1);
         }
 
         .card-sophomore .tag {
-            background: #ffffff;
-            color: #000000;
+            background: var(--color-primary);
+            color: var(--bg-body);
         }
 
         .card-sophomore .work-title { font-size: 1.5rem; }
-        .card-sophomore .work-desc { color: #d4d4d8; }
+        .card-sophomore .work-desc { color: var(--text-main); }
 
         footer {
             margin-top: 100px;
             text-align: center;
-            color: #52525b;
+            color: var(--text-sub);
             font-size: 0.85rem;
             padding-top: 20px;
             border-top: 1px solid var(--border-light);
@@ -263,10 +264,10 @@
             <!-- 【右半邊】作品集 -->
             <div class="right-portfolio">
 
-                <!-- 左側縱向欄位 (含大一作業卡片、大二featured) -->
+                <!-- 左側縱向欄位 -->
                 <div class="portfolio-col left-col">
                     
-                    <!-- 【大一區塊】數位科技概論作業卡片（點擊直接前往獨立作業頁面，非彈出視窗） -->
+                    <!-- 【大一區塊】數位科技概論作業卡片 -->
                     <a href="homework.html" class="work-card card-rect-short">
                         <span class="tag">FRESHMAN · 大一作品</span>
                         <h3 class="work-title">
