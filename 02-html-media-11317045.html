@@ -4,21 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>校園自然觀察任務卡</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a href="homework.html" class="nav-back">&larr; 返回作業列表</a>
+
   <h1>校園自然觀察任務卡</h1>
   <p>今天我們用眼睛觀察，也用文字紀錄發現。</p>
 
   <h2>任務一:看看葉脈</h2>
-  <img src="media-02/leaf-photo.png" 清晨陽光透過綠色葉片，清楚呈現葉脈的AI生成圖="一朵粉紅色波斯菊與黃色花心的攝影風格 AI 生成圖片" width="240">
+  <img src="media-02/leaf-photo.png" alt="一朵粉紅色波斯菊與黃色花心的攝影風格 AI 生成圖片" width="240">
   <p>觀察葉片圖片，找出葉脈延伸的方向。</p>
 
   <h2>換一張透明背景 PNG</h2>
-  <p>把下方圖片來源換成 media-02/flower-transparent.png"alt="透明背景的粉紅花花朵與枝葉，AI生成圖片"</p>
-  <div style="background-color: #dcebea; padding: 16px;">
+  <p>把下方圖片來源換成 media-02/flower-transparent.png</p>
+  <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-md);">
     <img src="media-02/flower-photo.png" alt="粉紅色花朵的攝影風格 AI 圖片" width="240">
   </div>
-  <p>這裡預先提供淡色底板，只用來觀察透明效果；CSS 下一節再學。</p>
+  <p>這裡預先提供深色底板，用來觀察透明效果。</p>
 
   <h2>船長的一週行事曆</h2>
   <img src="media-02/captain-calendar.svg" alt="船長的一週行事曆，重點行程見下方文字" width="700">
@@ -35,7 +38,6 @@
 
   <h2>素材來源</h2>
   <p>花朵、葉片與透明花朵 PNG 由 AI 生成；行事曆 SVG 與提示音為本課製作的練習素材。影片採用 MDN 的 flower.mp4 示範檔。</p>
-  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video">查看 MDN 影片範例說明</a></p>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video" target="_blank">查看 MDN 影片範例說明 &rarr;</a></p>
 </body>
 </html>
-
