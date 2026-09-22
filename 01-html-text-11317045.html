@@ -1,36 +1,121 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>活動 01：文字層級與語意 | 水與生活</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水與生活:小小科學探索日</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 學習單卡片網格佈局 */
+    .worksheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    /* 任務卡片樣式 */
+    .task-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 任務標籤 */
+    .task-badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--bg-dark);
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    .task-card h2, .task-card h3 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .task-card p {
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* 強調重點區塊 */
+    .highlight-box {
+      background: rgba(138, 169, 196, 0.1);
+      border-left: 3px solid var(--color-primary);
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    /* 橫跨全寬的滿版卡片 */
+    .task-card.full-width {
+      grid-column: 1 / -1;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header style="margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
-            <a href="homework.html" style="color: var(--color-primary); text-decoration: none; font-size: 0.9rem;">&larr; 返回作業列表</a>
-            <h1 style="margin-top: 15px;">活動 01：文字層級與語意</h1>
-        </header>
+  <div class="container">
+    
+    <!-- 頂部頁籤與主標題 -->
+    <header style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
+      <a href="homework.html" style="color: var(--color-primary); text-decoration: none; font-size: 0.9rem;">&larr; 返回作業列表</a>
+      <h1 style="margin-top: 15px; font-size: 2.2rem; color: #ffffff;">水與生活:小小科學探索日</h1>
+      <p style="color: var(--color-primary); font-size: 1.05rem; margin-top: 8px;">一起從生活中的水，發現科學的有趣之處。</p>
+    </header>
 
-        <main class="assignment-card" style="display: block; line-height: 1.8;">
-            <h2 style="color: var(--color-primary); margin-bottom: 15px;">水與生活（Water and Life）</h2>
-            
-            <p style="margin-bottom: 15px;">
-                水是地球上最寶貴的資源之一。化學式為 <strong>H<sub>2</sub>O</strong>，是由兩個氫原子與一個氧原子結合而成。
-            </p>
+    <!-- 學習單/探索任務看板網格 -->
+    <div class="worksheet-grid">
 
-            <h3 style="color: var(--text-main); margin: 25px 0 10px 0;">水的常見狀態與溫度：</h3>
-            <ul style="margin-left: 20px; color: var(--text-sub); margin-bottom: 20px;">
-                <li>冰的融點：0 <sup>o</sup>C</li>
-                <li>水的沸點：100 <sup>o</sup>C</li>
-            </ul>
+      <!-- 卡片 1：活動介紹 -->
+      <div class="task-card">
+        <span class="task-badge">INFO</span>
+        <h2>活動介紹</h2>
+        <p>這次活動適合 <b>國小中年級學生</b>，請帶著好奇心一起參加。</p>
+      </div>
 
-            <h3 style="color: var(--text-main); margin: 25px 0 10px 0;">重要觀念：</h3>
-            <p style="color: var(--text-sub);">
-                珍惜水資源，從日常省水做起。水不僅維持人類生命，也是維持生態平衡不可或缺的要素。
-            </p>
-        </main>
+      <!-- 卡片 2：科學探索任務 -->
+      <div class="task-card">
+        <span class="task-badge">LAB 01</span>
+        <h3>觀察水的樣子</h3>
+        <p>看看：<i>不同容器中的水</i>，試著說出你觀察到的變化。</p>
+
+        <h3 style="margin-top: 10px;">認識水的名字</h3>
+        <p>水的化學式是 H<sub>2</sub>O。</p>
+      </div>
+
+      <!-- 卡片 3：行前提醒與注意事項（橫跨全寬） -->
+      <div class="task-card full-width">
+        <span class="task-badge">NOTICE</span>
+        <h3>參加前的小提醒</h3>
+        <p>請自備水壺，並準備一本觀察筆記。</p>
+        
+        <div class="highlight-box">
+          <p>今天的探索口號是：<i>先觀察，再提問</i>!</p>
+          <p style="margin-top: 6px;">我們將使用面積為 100cm<sup>2</sup> 的方形觀察卡。</p>
+        </div>
+      </div>
+
     </div>
+
+    <!-- 頁尾 -->
+    <footer style="margin-top: 60px; text-align: center; color: var(--text-sub); font-size: 0.85rem; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <p>&copy; 2026 陳姵宇. All rights reserved.</p>
+    </footer>
+
+  </div>
 </body>
 </html>
