@@ -3,82 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>活動 02：多媒體應用 | 自然觀察任務卡</title>
+    <title>校園自然觀察任務卡</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .media-grid {
+        /* 學習單看板網格 */
+        .worksheet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
-        .media-card {
+        /* 學習單主題卡片 */
+        .task-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .media-card h3 {
-            font-size: 1.1rem;
-            color: var(--color-primary);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+        /* 學習單任務標題標籤 */
+        .task-badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--bg-dark);
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            align-self: flex-start;
         }
 
-        .media-card img, 
-        .media-card video {
+        .task-card h2 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .task-card img, 
+        .task-card video {
             width: 100%;
+            height: auto;
             border-radius: 8px;
-            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
         }
 
-        .media-card audio {
+        .task-card audio {
             width: 100%;
-            margin-top: 10px;
+            margin-top: 8px;
+        }
+
+        .task-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--color-primary);
+        }
+
+        /* 橫跨全寬的大卡片（如長影片或綜合紀錄） */
+        .task-card.full-width {
+            grid-column: 1 / -1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header style="margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
+        <header style="margin-bottom: 30px;">
             <a href="homework.html" style="color: var(--color-primary); text-decoration: none; font-size: 0.9rem;">&larr; 返回作業列表</a>
-            <h1 style="margin-top: 15px;">活動 02：多媒體應用 (自然觀察任務卡)</h1>
+            <h1 style="margin-top: 15px;">校園自然觀察任務卡</h1>
+            <p style="color: var(--text-sub); margin-top: 8px;">今天我們用眼睛觀察，也用文字紀錄發現。</p>
         </header>
 
-        <div class="media-grid">
-            <!-- 圖片區塊 -->
-            <div class="media-card">
-                <h3>📷 觀察物件照片</h3>
-                <img src="https://picsum.photos/600/400" alt="自然觀察物件">
-                <p style="font-size: 0.85rem; color: var(--text-sub);">紀錄於校園生態池畔的自然植物細部結構。</p>
-            </div>
-
-            <!-- 音訊區塊 -->
-            <div class="media-card">
-                <h3>🎵 環境音效紀錄</h3>
-                <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
-                    <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 10px;">現場鳥鳴與水流聲錄音：</p>
-                    <audio controls>
-                        <source src="" type="audio/mpeg">
-                        您的瀏覽器不支援音訊播放器。
-                    </audio>
+        <!-- 學習單區域 -->
+        <div class="worksheet-grid">
+            
+            <!-- 任務一卡片 -->
+            <div class="task-card">
+                <span class="task-badge">TASK 01</span>
+                <h2>🍃 看看葉脈</h2>
+                <img src="葉脈圖片檔名.jpg" alt="葉脈觀察">
+                <div class="task-desc">
+                    <strong>觀察紀錄：</strong><br>
+                    觀察葉片圖片，找出葉脈延伸的方向與網狀結構。
                 </div>
             </div>
 
-            <!-- 影片區塊 -->
-            <div class="media-card" style="grid-column: 1 / -1;">
-                <h3>🎬 動態觀察影片</h3>
-                <video controls poster="https://picsum.photos/800/450">
-                    <source src="" type="video/mp4">
-                    您的瀏覽器不支援影片播放器。
-                </video>
-                <p style="font-size: 0.85rem; color: var(--text-sub);">短片紀錄：生物於自然環境中的移動與互動姿態。</p>
+            <!-- 任務二卡片（可依你的實際內容替換標題與多媒體檔名） -->
+            <div class="task-card">
+                <span class="task-badge">TASK 02</span>
+                <h2>🔊 聽聽自然之聲</h2>
+                <audio controls>
+                    <source src="錄音檔名.mp3" type="audio/mpeg">
+                </audio>
+                <div class="task-desc">
+                    <strong>聆聽紀錄：</strong><br>
+                    細心聆聽校園中收錄的環境聲音與鳥鳴聲。
+                </div>
             </div>
+
+            <!-- 任務三卡片（動態影片紀錄） -->
+            <div class="task-card full-width">
+                <span class="task-badge">TASK 03</span>
+                <h2>🎥 動態影像觀察</h2>
+                <video controls>
+                    <source src="影片檔名.mp4" type="video/mp4">
+                </video>
+                <div class="task-desc">
+                    <strong>影像紀錄：</strong><br>
+                    記錄生物在自然環境中的活動軌跡。
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
