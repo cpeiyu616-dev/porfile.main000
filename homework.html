@@ -4,85 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>數位科技概論作業列表 | 陳姵宇 Peiyu Chen</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* CSS Reset & Variables */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --bg-body: #08080a;           /* 極致深黑背景 */
-            --bg-card: rgba(255, 255, 255, 0.04); /* 半透明白 */
-            --border-light: rgba(255, 255, 255, 0.12); /* 框線更細緻半透明 */
-            --text-main: #f4f4f5;         /* 冷白文字 */
-            --text-sub: #a1a1aa;          /* 次要灰字 */
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-body);
-            background-image: radial-gradient(circle at 50% -20%, #1a1a22 0%, var(--bg-body) 80%);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 60px 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* 頂部導覽列與標題 */
-        .nav-back {
-            display: inline-flex;
-            align-items: center;
-            color: var(--text-sub);
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            transition: color 0.2s ease;
-        }
-
-        .nav-back:hover {
-            color: #ffffff;
-        }
-
-        header {
-            margin-bottom: 50px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0.05em;
-            margin-top: 10px;
-        }
-
         .tag {
             display: inline-block;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             padding: 4px 10px;
             border-radius: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #d4d4d8;
+            background: rgba(138, 169, 196, 0.15);
+            color: var(--color-primary);
             letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        /* 作業區塊排版 */
-        .section-title {
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 20px;
-            padding-left: 12px;
-            border-left: 2px solid #ffffff;
+            margin-bottom: 8px;
         }
 
         .assignment-group {
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -90,63 +27,48 @@
 
         .assignment-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 22px 26px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
 
         .assignment-card:hover {
             transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.3);
-            background-color: rgba(255, 255, 255, 0.07);
-        }
-
-        .assignment-info h3 {
-            font-size: 1.1rem;
-            color: #ffffff;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-
-        .assignment-info p {
-            color: var(--text-sub);
-            font-size: 0.9rem;
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
         .assignment-link {
             font-size: 0.85rem;
-            color: #ffffff;
+            color: var(--color-primary);
             text-decoration: none;
             padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(138, 169, 196, 0.1);
+            border: 1px solid var(--color-primary);
             border-radius: 6px;
             transition: all 0.2s ease;
             white-space: nowrap;
-            flex-shrink: 0;
             margin-left: 20px;
         }
 
         .assignment-link:hover {
-            background: #ffffff;
-            color: #000000;
+            background: var(--color-primary);
+            color: var(--bg-dark);
         }
 
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
             text-align: center;
-            color: #52525b;
+            color: var(--color-text-sub);
             font-size: 0.85rem;
             padding-top: 20px;
-            border-top: 1px solid var(--border-light);
+            border-top: 1px solid var(--border-color);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .assignment-card {
                 flex-direction: column;
@@ -155,7 +77,7 @@
             }
             .assignment-link {
                 margin-left: 0;
-                align-self: stretch;
+                width: 100%;
                 text-align: center;
             }
         }
@@ -164,21 +86,18 @@
 <body>
 
     <div class="container">
-        <!-- 返回首頁按鈕 -->
         <a href="index.html" class="nav-back">&larr; 返回個人作品集首頁</a>
 
-        <!-- 頁面標題 -->
-        <header>
+        <header style="margin-bottom: 30px;">
             <span class="tag">COURSEWORK · 第二週教學講義實作</span>
             <h1>數位科技概論作業列表</h1>
         </header>
 
-        <!-- HTML 基礎作業區塊 -->
         <div class="assignment-group">
-            <h2 class="section-title">HTML 基礎練習 (活動 01–04)</h2>
+            <h2>HTML 基礎練習 (活動 01–04)</h2>
 
             <div class="assignment-card">
-                <div class="assignment-info">
+                <div>
                     <h3>活動 01：文字層級與語意</h3>
                     <p>製作「水與生活」科學活動介紹頁，運用標題、段落與上下標語意標籤。</p>
                 </div>
@@ -186,15 +105,15 @@
             </div>
 
             <div class="assignment-card">
-                <div class="assignment-info">
+                <div>
                     <h3>活動 02：多媒體應用</h3>
-                    <p>製作自然觀察任務卡，整合圖片、音訊與影片元素（含 .zip 壓縮檔）。</p>
+                    <p>製作自然觀察任務卡，整合圖片、音訊與影片元素。</p>
                 </div>
-                <a href="02-html-media-11317045.html" target="_blank" class="assignment-link">下載壓縮檔 &rarr;</a>
+                <a href="02-html-media-11317045.html" target="_blank" class="assignment-link">檢視作業 &rarr;</a>
             </div>
 
             <div class="assignment-card">
-                <div class="assignment-info">
+                <div>
                     <h3>活動 03：清單與表格</h3>
                     <p>建置「紙橋挑戰社」活動準備頁與結構化任務分工表格。</p>
                 </div>
@@ -202,7 +121,7 @@
             </div>
 
             <div class="assignment-card">
-                <div class="assignment-info">
+                <div>
                     <h3>活動 04：表單元件</h3>
                     <p>設計放學後社團體驗報名表，熟悉文字輸入、選單與按鈕互動。</p>
                 </div>
@@ -210,12 +129,11 @@
             </div>
         </div>
 
-        <!-- CSS 樣式與排版區塊 -->
         <div class="assignment-group">
-            <h2 class="section-title">CSS 樣式與排版 (活動 05–09 五選一)</h2>
+            <h2>CSS 樣式與排版 (活動 05–09 五選一)</h2>
 
             <div class="assignment-card">
-                <div class="assignment-info">
+                <div>
                     <h3>CSS 綜合專案成果</h3>
                     <p>挑選案例進行視覺風格最佳化、RWD 響應式排版與 WAVE 無障礙檢測修正。</p>
                 </div>
