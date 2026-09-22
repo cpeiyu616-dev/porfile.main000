@@ -21,14 +21,12 @@
       <option value="story">故事劇場</option>
       <option value="drawing">科學手作</option>
       <option value="game">桌遊挑戰</option>
-
     </select>
   </p>
   <fieldset>
     <legend>方便參加的日子（單選）</legend>
-    <p><label><input type="radio" name="session" value="Tuesday"> 星期二</label></p>
-    <p><label><input type="radio" name="session" value="Thursday"> 星期四</label></p>
- <p><label><input type="radio" name="session" value="Friday"> 星期五</label></p>
+    <p><label><input type="radio" name="session" value="Tuesday"> 星期二</label></p> <p><label><input type="radio" name="session" value="Thursday"> 星期四</label></p>
+    <p><label><input type="radio" name="session" value="Friday"> 星期五</label></p>
   </fieldset>
   <fieldset>
     <legend>我期待的活動方式（可複選）</legend>
@@ -36,6 +34,14 @@
     <p><label><input type="checkbox" name="skills" value="expression"> 和同學合作</label></p>
     <p><label><input type="checkbox" name="skills" value="expression"> 上台分享</label></p>
   </fieldset>
+
+  <!-- 新增欄位：聯絡 Email -->
+  <p>
+    <label for="contact_email">聯絡 Email</label>
+    <input id="contact_email" name="contact_email" type="email" placeholder="例如：student@example.com">
+  </p>
+  <p>設計說明：選用單行文字輸入框（type="email"）是因為電子郵件是個別學員獨一無二的自訂資訊，無法用預設選項讓使用者選擇。使用特定類型的單行輸入框可以提示使用者輸入格式正確的電子郵件，方便日後寄送體驗活動的錄取通知。</p>
+
   <p>
     <label for="message">想告訴老師的事</label><br>
     <textarea id="message" name="message" rows="5" cols="32" placeholder="提示：例如我想和同學一起完成一個小作品"></textarea>
