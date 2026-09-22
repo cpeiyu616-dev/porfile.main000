@@ -6,7 +6,6 @@
   <title>活動 02：多媒體應用</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* 學習單看板網格 */
     .worksheet-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -14,7 +13,6 @@
       margin-top: 24px;
     }
 
-    /* 任務卡片樣式 */
     .task-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -26,7 +24,6 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    /* 任務標籤 */
     .task-badge {
       display: inline-block;
       background: var(--color-primary);
@@ -46,16 +43,14 @@
       padding-bottom: 10px;
     }
 
-    .task-card img {
+    .task-card img, .task-card audio, .task-card video {
       width: 100%;
-      height: auto;
       border-radius: 8px;
-      border: 1px solid var(--border-color);
     }
 
-    .task-card audio, .task-card video {
-      width: 100%;
-      border-radius: 8px;
+    .task-card img {
+      height: auto;
+      border: 1px solid var(--border-color);
     }
 
     .task-card p {
@@ -65,7 +60,6 @@
       margin: 0;
     }
 
-    /* 滿版橫跨卡片 */
     .task-card.full-width {
       grid-column: 1 / -1;
     }
@@ -85,7 +79,7 @@
       <div class="task-card">
         <span class="task-badge">TASK 01</span>
         <h2>觀察任務 1：圖片觀察</h2>
-        <img src="%E5%AA%92%E9%AB%94-02/S__136069122.jpg" alt="自然觀察圖片">
+        <img src="media/S__136069122.jpg" alt="自然觀察圖片">
         <p>觀察重點：記錄觀察到的物種名稱與特徵。</p>
       </div>
 
@@ -93,7 +87,7 @@
       <div class="task-card">
         <span class="task-badge">TASK 02</span>
         <h2>觀察任務 2：聲音紀錄</h2>
-        <audio controls src="%E5%AA%92%E9%AB%94-02/recording.mp3"></audio>
+        <audio controls src="media/recording.mp3"></audio>
         <p>聆聽重點：記錄環境中的自然聲音與環境變化。</p>
       </div>
 
@@ -101,7 +95,7 @@
       <div class="task-card full-width">
         <span class="task-badge">TASK 03</span>
         <h2>觀察任務 3：影片紀錄</h2>
-        <video controls src="%E5%AA%92%E9%AB%94-02/S__136069124.mp4"></video>
+        <video controls src="media/S__136069124.mp4"></video>
         <p>影像紀錄：記錄生物活動與動態行為。</p>
       </div>
 
