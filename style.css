@@ -1,0 +1,247 @@
+/* =========================================================
+   極致深黑 × 莫蘭迪藍 全站統一樣式庫 (style.css)
+   ========================================================= */
+
+/* 1. 全局變數與重置 */
+:root {
+  --bg-dark: #0d0f12;           /* 深黑背景 */
+  --bg-card: #161a20;           /* 卡片與容器背景 */
+  --bg-input: #1e242c;          /* 輸入框背景 */
+  --color-primary: #8aa9c4;      /* 主莫蘭迪藍 */
+  --color-accent: #5a7d9a;       /* 次要莫蘭迪藍/懸浮色 */
+  --color-text-main: #f0f4f8;    /* 主要白字 */
+  --color-text-sub: #94a3b8;     /* 次要灰字 */
+  --border-color: #27303d;       /* 邊框線條 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --transition-speed: 0.25s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-dark);
+  background-image: radial-gradient(circle at 50% 0%, #17202a 0%, var(--bg-dark) 70%);
+  color: var(--color-text-main);
+  line-height: 1.7;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* 容器寬度限制 */
+.container, body > h1, body > p, body > h2, body > ul, body > ol, body > table, body > div, body > fieldset, body > button {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 2. 標題與語意標籤美化 */
+h1 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 12px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-top: 32px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+}
+
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1.2rem;
+  background-color: var(--color-primary);
+  margin-right: 10px;
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: #d1dbe5;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+p {
+  color: var(--color-text-sub);
+  margin-bottom: 12px;
+  font-size: 0.98rem;
+}
+
+/* 頂部返回導覽按鈕 */
+.nav-back {
+  display: inline-block;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 6px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-speed) ease;
+}
+
+.nav-back:hover {
+  background: var(--color-primary);
+  color: var(--bg-dark);
+}
+
+/* 3. 清單美化 (UL & OL) */
+ul, ol {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 20px 20px 20px 40px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+li {
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* 4. 表格美化 (Table) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+caption {
+  text-align: left;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+th {
+  background-color: #1c232d;
+  color: var(--color-primary);
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--color-text-main);
+  font-size: 0.95rem;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: rgba(138, 169, 196, 0.05);
+}
+
+/* 5. 表單元件美化 (Form Controls) */
+fieldset {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+legend {
+  color: var(--color-primary);
+  font-weight: 600;
+  padding: 0 10px;
+}
+
+label {
+  color: var(--color-text-main);
+  font-size: 0.95rem;
+}
+
+input[type="text"], input[type="email"], select, textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-main);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  transition: border-color var(--transition-speed) ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+input[type="radio"], input[type="checkbox"] {
+  accent-color: var(--color-primary);
+  margin-right: 8px;
+}
+
+button {
+  background-color: var(--color-primary);
+  color: var(--bg-dark);
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+button:disabled {
+  background-color: #2c3540;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+/* 6. 多媒體元件 (Media Controls) */
+img, video {
+  max-width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+audio {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border-radius: 30px;
+}
+
+/* 連結標籤 */
+a {
+  color: var(--color-primary);
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+  color: #adc7de;
+}
