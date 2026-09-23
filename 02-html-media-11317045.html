@@ -4,37 +4,170 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>校園自然觀察任務卡</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 學習單看板網格佈局 */
+    .worksheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    /* 任務卡片基礎樣式 */
+    .task-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 任務標籤 */
+    .task-badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--bg-dark);
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    .task-card h2 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin: 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .task-card p {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* 多媒體元件滿寬化 */
+    .task-card img, 
+    .task-card video, 
+    .task-card audio {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .task-card audio {
+      width: 100%;
+    }
+
+    /* 橫跨全寬的滿版卡片（適合大圖、行事曆或補充資訊） */
+    .task-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* 透明 PNG 觀察區塊專用微調 */
+    .transparent-demo-box {
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .transparent-demo-box img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 連結樣式優化 */
+    .task-card a {
+      color: var(--color-primary);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .task-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h1>校園自然觀察任務卡</h1>
-  <p>用圖片、聲音和影片，介紹一次觀察活動。</p>
+  <div class="container">
+    
+    <!-- 頁頭標題區 -->
+    <header style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
+      <a href="homework.html" style="color: var(--color-primary); text-decoration: none; font-size: 0.9rem;">&larr; 返回作業列表</a>
+      <h1 style="margin-top: 15px; font-size: 2.2rem; color: #ffffff;">校園自然觀察任務卡</h1>
+      <p style="color: var(--color-primary); font-size: 1.05rem; margin-top: 8px;">用圖片、聲音和影片，介紹一次觀察活動。</p>
+    </header>
 
-  <h2>任務一:看看葉脈</h2>
-  <img src="media-02/leaf-photo.png" 清晨陽光透過綠色葉片，清楚呈現葉脈的AI生成圖="一朵粉紅色波斯菊與黃色花心的攝影風格 AI 生成圖片" width="200">
-  <p>觀察葉片圖片，找出葉脈延伸的方向。</p>
+    <!-- 學習單/探索任務網格區域 -->
+    <div class="worksheet-grid">
 
-  <h2>換一張透明背景 PNG</h2>
-  <p>把下方圖片來源換成 media-02/flower-transparent.png"alt="透明背景的粉紅花花朵與枝葉，AI生成圖片"</p>
-  <div style="background-color: #dcebea; padding: 16px;">
-    <img src="media-02/flower-photo.png" alt="粉紅色花朵的攝影風格 AI 圖片" width="240">
+      <!-- 任務一：葉脈觀察 -->
+      <div class="task-card">
+        <span class="task-badge">TASK 01</span>
+        <h2>任務一:看看葉脈</h2>
+        <img src="media-02/leaf-photo.png" 清晨陽光透過綠色葉片，清楚呈現葉脈的AI生成圖="一朵粉紅色波斯菊與黃色花心的攝影風格 AI 生成圖片" width="200">
+        <p>觀察葉片圖片，找出葉脈延伸的方向。</p>
+      </div>
+
+      <!-- 觀察區：透明背景 PNG -->
+      <div class="task-card">
+        <span class="task-badge">TEST</span>
+        <h2>換一張透明背景 PNG</h2>
+        <p>把下方圖片來源換成 media-02/flower-transparent.png"alt="透明背景的粉紅花花朵與枝葉，AI生成圖片"</p>
+        <div class="transparent-demo-box" style="background-color: #dcebea; padding: 16px;">
+          <img src="media-02/flower-photo.png" alt="粉紅色花朵的攝影風格 AI 圖片" width="240">
+        </div>
+        <p>這裡預先提供淡色底板，只用來觀察透明效果；CSS 下一節再學。</p>
+      </div>
+
+      <!-- 任務二：準備開始 (聲音) -->
+      <div class="task-card">
+        <span class="task-badge">TASK 02</span>
+        <h2>任務二:準備開始</h2>
+        <audio src="media-02/notice.wav" controls></audio>
+        <p>按下播放，聽到三個由低到高的短音後，開始你的觀察。</p>
+      </div>
+
+      <!-- 任務三：觀察花朵 (影片) -->
+      <div class="task-card">
+        <span class="task-badge">TASK 03</span>
+        <h2>任務三:觀察花朵</h2>
+        <video src="media-02/flower.mp4" controls width="300"></video>
+        <p>播放短片，看看花朵怎麼移動，再用一句話描述。</p>
+      </div>
+
+      <!-- 補充資料：船長的一週行事曆 (滿版大卡片) -->
+      <div class="task-card full-width">
+        <span class="task-badge">SCHEDULE</span>
+        <h2>船長的一週行事曆</h2>
+        <img src="media-02/captain-calendar.svg" alt="船長的一週行事曆，重點行程見下方文字" width="700">
+        <p>教學用虛構行程：2026 年 9 月 14 日至 20 日。週一 10:00 啟航；週三 14:00 救生演練；週五 09:30 靠港補給；週日 10:00 返航。</p>
+        <p>完整行程：週一 08:30 航前簡報、10:00 離港啟航；週二 09:00 甲板巡檢、15:00 航海日誌；週三 07:30 海象觀測、14:00 救生演練；週四 10:00 燈塔定位、16:00 船員會議；週五 09:30 靠港補給、13:00 設備保養；週六 08:00 海岸探索、17:00 夕照攝影；週日 10:00 返航入港、15:30 下週規劃。</p>
+      </div>
+
+      <!-- 素材來源 (滿版卡片) -->
+      <div class="task-card full-width">
+        <span class="task-badge">CREDITS</span>
+        <h2>素材來源</h2>
+        <p>花朵、葉片與透明花朵 PNG 由 AI 生成；行事曆 SVG 與提示音為本課製作的練習素材。影片採用 MDN 的 flower.mp4 示範檔。</p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video">查看 MDN 影片範例說明</a></p>
+      </div>
+
+    </div>
+
+    <!-- 頁尾 -->
+    <footer style="margin-top: 60px; text-align: center; color: var(--text-sub); font-size: 0.85rem; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <p>&copy; 2026 陳姵宇. All rights reserved.</p>
+    </footer>
+
   </div>
-  <p>這裡預先提供淡色底板，只用來觀察透明效果；CSS 下一節再學。</p>
-
-  <h2>船長的一週行事曆</h2>
-  <img src="media-02/captain-calendar.svg" alt="船長的一週行事曆，重點行程見下方文字" width="700">
-  <p>教學用虛構行程：2026 年 9 月 14 日至 20 日。週一 10:00 啟航；週三 14:00 救生演練；週五 09:30 靠港補給；週日 10:00 返航。</p>
-  <p>完整行程：週一 08:30 航前簡報、10:00 離港啟航；週二 09:00 甲板巡檢、15:00 航海日誌；週三 07:30 海象觀測、14:00 救生演練；週四 10:00 燈塔定位、16:00 船員會議；週五 09:30 靠港補給、13:00 設備保養；週六 08:00 海岸探索、17:00 夕照攝影；週日 10:00 返航入港、15:30 下週規劃。</p>
-
-  <h2>任務二:準備開始</h2>
-  <audio src="media-02/notice.wav" controls></audio>
-  <p>按下播放，聽到三個由低到高的短音後，開始你的觀察。</p>
-
-  <h2>任務三:觀察花朵</h2>
-  <video src="media-02/flower.mp4" controls width="300"></video>
-  <p>播放短片，看看花朵怎麼移動，再用一句話描述。</p>
-
-  <h2>素材來源</h2>
-  <p>花朵、葉片與透明花朵 PNG 由 AI 生成；行事曆 SVG 與提示音為本課製作的練習素材。影片採用 MDN 的 flower.mp4 示範檔。</p>
-  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video">查看 MDN 影片範例說明</a></p>
 </body>
 </html>
